@@ -33,19 +33,15 @@ const Cart = (): JSX.Element => {
      )
 
   function handleProductIncrement(product: Product) {
-    updateProductAmount({ productId: product.id, amount: 1});
-    localStorage.setItem('@RocketShoes:cart', JSON.stringify(cart));
+    updateProductAmount({ productId: product.id, amount: (product.amount + 1)});
   }
 
   function handleProductDecrement(product: Product) {
-    updateProductAmount({ productId: product.id, amount: -1});
-    localStorage.setItem('@RocketShoes:cart', JSON.stringify(cart));
+    updateProductAmount({ productId: product.id, amount: (product.amount - 1)});
   }
 
   async function handleRemoveProduct(productId: number) {
-    const ArrayTemp = removeProduct(productId);
-    
-    localStorage.setItem('@RocketShoes:cart', JSON.stringify(ArrayTemp));
+    removeProduct(productId);
   }
 
   return (
